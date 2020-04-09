@@ -1,0 +1,27 @@
+<h1>Make and Eat Da Burger</h1>
+<input id="burgerinput"></input>
+<button id="burgerbutton">save burger</button>
+<ul>
+    {{#each burgers}}
+    <li>{{id}}{{burger_name}}{{devoured}}</li>
+    {{/each}}
+</ul>
+<script>
+    $("#burgerbutton").on('click', function () {
+
+
+        var newBurger = {
+            burger_name: $("#burgerinput").val(),
+            devoured: false,
+        }
+
+        $.ajax({
+            url: "/api/burgers",
+            type: "POST",
+            data: newBurger
+        }).then(function (data) {
+            console.log("newburgermade", data)
+        })
+        console.log("new burger", newBurger)
+    })
+</script>
