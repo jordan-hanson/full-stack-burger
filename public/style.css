@@ -1,0 +1,29 @@
+h1 {
+    text-align: center;
+}
+h2 {
+    text-align: center;
+}
+.col {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+}
+.row {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 20px;
+}
+.container {
+    align-items: flex-start;
+}
+.header {
+    padding: 100px;
+}
+li {
+    font-size: x-large;
+}
+body{
+    background-color: burlywood!important;
+}

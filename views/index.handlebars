@@ -1,28 +1,39 @@
-<h1>Make and Eat Da Burger</h1>
-<form class="newForm">
-    <input id="burger_name"></input>
-    <button id="burgerbutton">save burger</button>
-</form>
-<ul>
-    {{#each burgers}}
-    {{#unless devoured}}
-    <li>{{id}}{{burger_name}}{{devoured}}</li>
-    <button class="devoured" value="0" name="{{id}}">Devour</button>
-    {{/unless}}
-    {{/each}}
-</ul>
-
-<h2>Burgers Devoured!</h2>
-
-<ul>
-    {{#each burgers}}
-    {{#if devoured}}
-    <li>{{id}}{{burger_name}}{{devoured}}</li>
-    <button class="devoured" value="0" name="{{id}}">Devour</button>
-    {{/if}}
-    {{/each}}
-</ul>
-
+<div class="header">
+    <h1>Make your Burger and Eat it Too!</h1>
+</div>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <form class="newForm">
+                <h2>Step 1: Make your Burger</h2>
+                <input id="burger_name" placeholder="Title of Burger"></input>
+                <button id="burgerbutton">Save Burger</button>
+                <i class="material-icons" style="align-self:flex-start; float:left">arrow forward</i>
+            </form>
+        </div>
+        <div class="col">
+            <h2>Step 2: Devour your Burger</h2>
+            <ul>
+                {{#each burgers}}
+                {{#unless devoured}}
+                <li>{{burger_name}}</li>
+                <button class="devoured" value="0" name="{{id}}">Devour It!</button>
+                {{/unless}}
+                {{/each}}
+            </ul>
+        </div>
+        <div class="col">
+            <h2>Step 3: Your Devoured Burgers</h2>
+            <ul>
+                {{#each burgers}}
+                {{#if devoured}}
+                <li>{{burger_name}}</li>
+                {{/if}}
+                {{/each}}
+            </ul>
+        </div>
+    </div>
+</div>
 <script>
     $("#burgerbutton").on('click', function () {
         event.preventDefault();
@@ -46,8 +57,6 @@
     $(".devoured").on("click", function () {
         event.preventDefault();
 
-        var id = 3
-
         var devouredBurger = {
             devoured: true,
         };
@@ -59,7 +68,6 @@
             data: devouredBurger
         }).then(function () {
             location.reload();
-
             console.log("it is devoured", devoured)
         })
     })
