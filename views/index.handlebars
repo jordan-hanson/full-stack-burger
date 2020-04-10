@@ -1,5 +1,5 @@
 <h1>Make and Eat Da Burger</h1>
-<input id="burgerinput"></input>
+<input id="burger_name"></input>
 <button id="burgerbutton">save burger</button>
 <ul>
     {{#each burgers}}
@@ -11,7 +11,7 @@
 
 
         var newBurger = {
-            burger_name: $("#burgerinput").val(),
+            burger_name: $("#burger_name").val(),
             devoured: false,
         }
 

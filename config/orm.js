@@ -8,8 +8,11 @@ const orm = {
             cb(res)
         })
     },
-    insertOne: function (tableName, values) {
-        var query = "INSERT INTO " + tableName + " " + "(?, ?) VALUES (?, false)"
+    insertOne: function (tableName, columns, values) {
+        var query = "INSERT INTO " + tableName + " " + "(" + columns + ")" + " " + "VALUES" + " " + "(?, ?)" + ";"
+
+        console.log("this is my sql query", query)
+
         connection.query(query, values, function (err, res) {
             console.log(err, res)
         })

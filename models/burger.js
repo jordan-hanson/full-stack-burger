@@ -7,7 +7,7 @@ const burger = {
         })
     },
     insertOne: function () {
-        orm.insertOne('burgers', ["burger_name", "devoured"])
+        orm.insertOne('burgers', ["burger_name", " devoured"], ["Double Cheese", false])
     },
     updateOne: function () {
         orm.updateOne('burgers', 1)
