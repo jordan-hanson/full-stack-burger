@@ -5,8 +5,10 @@
 </form>
 <ul>
     {{#each burgers}}
+    {{#unless devoured}}
     <li>{{id}}{{burger_name}}{{devoured}}</li>
-    <button id="devoured" value="0">Devour</button>
+    <button class="devoured" value="0" name="{{id}}">Devour</button>
+    {{/unless}}
     {{/each}}
 </ul>
 
@@ -15,7 +17,8 @@
 <ul>
     {{#each burgers}}
     {{#if devoured}}
-    {{true}}
+    <li>{{id}}{{burger_name}}{{devoured}}</li>
+    <button class="devoured" value="0" name="{{id}}">Devour</button>
     {{/if}}
     {{/each}}
 </ul>
@@ -40,18 +43,18 @@
         })
     });
 
-    $("#devoured").on("click", function () {
+    $(".devoured").on("click", function () {
         event.preventDefault();
 
-        var id = 2
+        var id = 3
 
         var devouredBurger = {
             devoured: true,
         };
 
-        console.log("this is the id ", id)
+        console.log("this is the id ", $(this).attr("name"))
         $.ajax({
-            url: "/api/burgers/" + id,
+            url: "/api/burgers/" + $(this).attr("name"),
             type: "PUT",
             data: devouredBurger
         }).then(function () {
