@@ -6,8 +6,8 @@ const burger = {
             cb(results)
         })
     },
-    insertOne: function () {
-        orm.insertOne('burgers', ["burger_name", " devoured"], ["Double Cheese", false])
+    insertOne: function (columns, values) {
+        orm.insertOne('burgers', columns, values)
     },
     updateOne: function () {
         orm.updateOne('burgers', 1)

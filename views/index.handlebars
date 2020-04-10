@@ -1,6 +1,8 @@
 <h1>Make and Eat Da Burger</h1>
-<input id="burger_name"></input>
-<button id="burgerbutton">save burger</button>
+<form class="newForm">
+    <input id="burger_name"></input>
+    <button id="burgerbutton">save burger</button>
+</form>
 <ul>
     {{#each burgers}}
     <li>{{id}}{{burger_name}}{{devoured}}</li>
@@ -8,6 +10,7 @@
 </ul>
 <script>
     $("#burgerbutton").on('click', function () {
+        event.preventDefault();
 
 
         var newBurger = {
@@ -20,7 +23,7 @@
             type: "POST",
             data: newBurger
         }).then(function (data) {
-            console.log("newburgermade", data)
+            location.reload()
         })
         console.log("new burger", newBurger)
     })

@@ -9,7 +9,7 @@ const orm = {
         })
     },
     insertOne: function (tableName, columns, values) {
-        var query = "INSERT INTO " + tableName + " " + "(" + columns + ")" + " " + "VALUES" + " " + "(?, ?)" + ";"
+        var query = "INSERT INTO " + tableName + " " + "(" + columns + ")" + " " + "VALUES" + " " + "(?," + " " + false + ")" + ";"
 
         console.log("this is my sql query", query)
 
