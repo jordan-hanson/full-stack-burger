@@ -10,11 +10,12 @@ router.get("/", function (req, res) {
             burgers: data
         };
         console.log('hbsobject', hbsObject);
-        res.render("index", hbsObject)
+        return res.render("index", hbsObject);
+        // return res.status(200).json();
     })
-    //res.render("index")
+    // res.render("index")
     //res.send('TESTING!!!')
-})
+});
 router.post("/api/burgers", function (req, res) {
     burger.insertOne(["burger_name", "devoured"], [req.body.burger_name, req.body.devoured], function (result) {
         res.json({ id: result.insertId });
@@ -22,17 +23,16 @@ router.post("/api/burgers", function (req, res) {
     });
 });
 router.put("/api/burgers/:id", function (req, res) {
-    let id = "id = " + req.params.id;
-    console.log("this is my burger id = ", id)
-    burger.updateOne({
-        devoured: req.body.douvered
-    }), id, function (result) {
+    let id = req.params.id;
+    console.log("this is my burger id =", id)
+    burger.updateOne(("devoured"), (req.params.id), function (result) {
+        console.log("give a 404 why", result)
         if (result.changedRows === 0) {
             return res.status(404).end()
         } else {
             status(200).end();
-        }
-    }
+        };
+    });
 })
 
 module.exports = router
