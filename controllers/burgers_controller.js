@@ -21,6 +21,19 @@ router.post("/api/burgers", function (req, res) {
         console.log("get the id", { id: result.insertId })
     });
 });
+router.put("/api/burgers/:id", function (req, res) {
+    let id = "id = " + req.params.id;
+    console.log("this is my burger id = ", id)
+    burger.updateOne({
+        devoured: req.body.douvered
+    }), id, function (result) {
+        if (result.changedRows === 0) {
+            return res.status(404).end()
+        } else {
+            status(200).end();
+        }
+    }
+})
 
 module.exports = router
 

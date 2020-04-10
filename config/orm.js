@@ -17,8 +17,9 @@ const orm = {
             console.log(err, res)
         })
     },
-    updateOne: function (tableName, id) {
-        var query = "UPDATE" + tableName + "SET devoured = true WHERE id = ?"
+    updateOne: function (tableName, nowDevoured, id) {
+        var query = "UPDATE " + tableName + " SET " + nowDevoured + " WHERE " + id + ";"
+
         connection.query(query, id, function (err, res) {
             console.log(err, res)
         })
