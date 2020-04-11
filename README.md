@@ -45,7 +45,6 @@ Step 5: Notice your burger is now devoured.
 REPEAT FOR ALL STEPS AS YOU PLEASE. ALL BURGERS ARE SAVED IN THE DATABASE AND JUST UPDATED BY THE DEVOURED BOOLEAN COLUMN. NOTHING IS DELETED.
 
 Links to the Work 
-Jordan Hanson
 https://the-full-stack-burger.herokuapp.com 
 https://github.com/jordan-hanson/full-stack-burger 
 https://jordan-hanson.github.io/full-stack-burger/

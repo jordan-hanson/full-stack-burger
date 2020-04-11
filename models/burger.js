@@ -14,9 +14,11 @@ const burger = {
             console.log("the burgerJs results ", results)
         });
     },
-    updateOne: function (devoured, id) {
-        orm.updateOne('burgers', devoured, id)
-        console.log("now devoured", devoured)
+    updateOne: function (devoured, id, cb) {
+        orm.updateOne('burgers', devoured, id, function (results) {
+            console.log("now devoured", results)
+            cb(results)
+        })
     }
 }
 module.exports = burger

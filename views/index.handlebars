@@ -17,7 +17,7 @@
                 {{#each burgers}}
                 {{#unless devoured}}
                 <li>{{burger_name}}</li>
-                <button class="devoured" value="0" name="{{id}}">Devour It!</button>
+                <button class="devoured" value="0" name="{{id}}" type="submit">Devour It!</button>
                 {{/unless}}
                 {{/each}}
             </ul>
@@ -54,7 +54,7 @@
         })
     });
 
-    $(".devoured").on("click", function () {
+    $(".devoured").on("click", function (event) {
         event.preventDefault();
 
         var devouredBurger = {
@@ -64,11 +64,12 @@
         console.log("this is the id ", $(this).attr("name"))
         $.ajax({
             url: "/api/burgers/" + $(this).attr("name"),
-            type: "PUT",
+            method: "PUT",
             data: devouredBurger
-        }).then(function () {
+        }).then(function (data) {
+            console.log(".then(worked)")
             location.reload();
-            console.log("it is devoured", devoured)
+            console.log("it is devoured", data)
         })
     })
 

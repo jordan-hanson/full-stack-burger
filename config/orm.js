@@ -23,10 +23,14 @@ const orm = {
             cb(res);
         });
     },
-    updateOne: function (tableName, devoured, id) {
+    updateOne: function (tableName, devoured, id, cb) {
         var query = "UPDATE " + tableName + " SET " + devoured + "= true" + " WHERE " + "id = " + id + ";"
 
         connection.query(query, id, function (err, res) {
+            if (err) {
+                throw err
+            }
+            cb(res)
             console.log(err, res)
         })
     }
